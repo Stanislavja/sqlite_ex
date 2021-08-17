@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>Sample</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.css" rel="stylesheet">
+
+  <!-- Font Awesome-->
+  <!-- <script src="https://kit.fontawesome.com/aedc099f31.js" crossorigin="anonymous"></script> -->
+  <script src="js/icons.js"></script>
+  <!-- Favicons -->
+  <link rel="icon" href="https://getbootstrap.com/docs/5.0/assets/img/favicons/favicon.ico">
+
+
+  <style>
+
+
+    .sidenav {
+      height: 100%;
+      width: 280px;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-image: url('img/gradient.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      overflow-x: hidden;
+      display: flex;
+      transition: all 0.5s ease 0s;
+    }
+
+    /* .sidenav a {
+      padding: 6px 8px 6px 16px;
+      text-decoration: none;
+      font-size: 25px;
+      color: #818181;
+      display: block;
+    }
+
+    .sidenav a:hover {
+      color: #f1f1f1;
+    } */
+
+    .main {
+      margin-left: 280px; /* Same as the width of the sidenav */
+      padding: 0px 10px;
+      transition: all 0.5s ease 0s;
+    }
+
+    ​
+
+    @media screen and (max-height: 450px) {
+      .sidenav {
+        padding-top: 15px;
+      }
+
+      .sidenav a {
+        font-size: 18px;
+      }
+    }
+
+    /* <!-- Theming --> */
+    .nav-link {
+      padding-top: 0.6rem;
+      padding-bottom: 0.6rem;
+    }
+
+    .nav-link.active {
+      background: rgba(196, 196, 196, 0.25) !important;
+      border-radius: 10px !important;
+      font-style: italic;
+    }
+
+    .sim-tab {
+      padding-top: 0.6rem;
+      padding-bottom: 0.6rem;
+      color: #212529;
+      font-size: 1.25vw;
+    }
+
+    .sim-tab:hover {
+      color: #212529 !important;
+    }
+
+    .sim-tab.active {
+      border-radius: 0px !important;
+      background: unset !important;
+    }
+
+    .space-left {
+      padding-left: 15px;
+    }
+
+    .icon-height {
+      height: 18px;
+      vertical-align: text-bottom !important;
+    }
+
+    .sub-list {
+      padding: 0.24rem;
+      font-style: italic;
+
+      opacity: 0.5;
+    }
+
+    .sub-list.active {
+      background: rgba(196, 196, 196, 0.25) !important;
+      border-radius: 10px !important;
+      opacity: 1;
+    }
+
+    .sub-item {
+      margin-left: 4rem;
+    }
+
+    .content-area {
+      flex: 1;
+    }
+
+    .problem {
+      background: #FEFCFC;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 40px;
+    }
+
+    /* <!--  Set this to width of sidebar --> */
+
+    .modal-offset {
+      padding-left: 280px;
+    }
+
+    .history {
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 24px;
+      color: #1AA330;
+    }
+
+    .history-response {
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 24px;
+      color: #1956F3;
+      padding-left: 1rem;
+    }
+
+    .problem-title {
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 32px;
+      text-align: center;
+      color: #000000;
+    }
+
+    .mobile-menu {
+      display: inline-block;
+      position: absolute;
+      top: 20px;
+      left: 0;
+      margin-right: -20px;
+      -webkit-transition: .3s;
+      -o-transition: .3s;
+      transition: .3s;
+    }
+
+    .mobile-exit {
+      margin-left: 2rem;
+    }
+
+    .btn-mobile-menu {
+      background: #4D6EE3;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+      border-radius: 10px;
+      color: #FFFFFF;
+    }
+
+    .btn-mobile-menu:hover {
+      background: #6744f3;
+      color: #FFFFFF;
+    }
+
+    /* Hide Mobile Controls, Show Sidenav on width over 865px*/
+    @media screen and (min-width: 865px) {
+      .mobile-menu {
+        display: none;
+      }
+
+      .mobile-exit {
+        display: none;
+      }
+
+      .sidenav {
+
+      }
+
+      .main {
+
+      }
+    }
+
+    /* Show Mobile Controls, Hide Sidenav on width under 865px*/
+    @media screen and (max-width: 864px) {
+
+      .sidenav {
+        width: 0;
+      }
+
+      .main {
+        margin-left: 0;
+      }
+
+      .sim-tab {
+        padding: 4px;
+        color: #212529;
+        font-size: 2vw;
+      }
+
+      .left {
+        width: 40% !important;
+      }
+
+      .right {
+        width: 60% !important;
+      }
+    }
+
+    @media screen and (max-width: 442px) {
+      .sim-tab {
+        padding: 4px;
+        color: #212529;
+        font-size: 2.8vw;
+      }
+    }
+
+  </style>
+
+</head>
+
+<body>
+<div class="sidenav" id="sidenav">
+  <div class="d-flex flex-column flex-shrink-0 p-3 text-white" style="width: 280px;">
+    <div class="d-flex align-items-center me-auto text-white text-decoration-none">
+      <!-- <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg> -->
+      <svg width="40" height="32" viewBox="0 0 353 283" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g filter="url(#filter0_ii)">
+          <path
+              d="M344.175 229.938H210.443C210.035 240.887 202.33 247.625 192.385 247.625H158.85C148.541 247.625 140.637 237.969 140.775 229.938H8.825C3.97125 229.938 0 233.917 0 238.781V247.625C0 267.081 15.885 283 35.3 283H317.7C337.115 283 353 267.081 353 247.625V238.781C353 233.917 349.029 229.938 344.175 229.938ZM317.7 26.5312C317.7 11.9391 305.786 0 291.225 0H61.775C47.2137 0 35.3 11.9391 35.3 26.5312V212.25H317.7V26.5312ZM282.4 176.875H70.6V35.375H282.4V176.875Z"
+              fill="white"/>
+        </g>
+        <defs>
+          <filter id="filter0_ii" x="0" y="-4" width="353" height="295" filterUnits="userSpaceOnUse"
+                  color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                           result="hardAlpha"/>
+            <feOffset dy="8"/>
+            <feGaussianBlur stdDeviation="4"/>
+            <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.25 0"/>
+            <feBlend mode="normal" in2="shape" result="effect1_innerShadow"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                           result="hardAlpha"/>
+            <feOffset dy="-4"/>
+            <feGaussianBlur stdDeviation="4"/>
+            <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+            <feBlend mode="normal" in2="effect1_innerShadow" result="effect2_innerShadow"/>
+          </filter>
+        </defs>
+      </svg>
+      <span class="h4 mb-0 space-left">Sample</span>
+      <button type="button" class="btn-close btn-close-white mobile-exit" aria-label="Close"
+              onclick="hideSide();"></button>
+    </div>
+
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a href="menu.html" class="nav-link text-white" aria-current="page">
+          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="home"
+               class="svg-inline--fa fa-home fa-w-18 icon-height" role="img" xmlns="http://www.w3.org/2000/svg"
+               viewBox="0 0 576 512">
+            <path fill="currentColor"
+                  d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"></path>
+          </svg>
+          <span class="space-left">Home</span>
+        </a>
+      </li>
+      <li>
+        <a href="problem.html" class="nav-link text-white">
+          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="question-circle"
+               class="svg-inline--fa fa-question-circle fa-w-18 icon-height" role="img"
+               xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+            <path fill="currentColor"
+                  d="M504 256c0 136.997-111.043 248-248 248S8 392.997 8 256C8 119.083 119.043 8 256 8s248 111.083 248 248zM262.655 90c-54.497 0-89.255 22.957-116.549 63.758-3.536 5.286-2.353 12.415 2.715 16.258l34.699 26.31c5.205 3.947 12.621 3.008 16.665-2.122 17.864-22.658 30.113-35.797 57.303-35.797 20.429 0 45.698 13.148 45.698 32.958 0 14.976-12.363 22.667-32.534 33.976C247.128 238.528 216 254.941 216 296v4c0 6.627 5.373 12 12 12h56c6.627 0 12-5.373 12-12v-1.333c0-28.462 83.186-29.647 83.186-106.667 0-58.002-60.165-102-116.531-102zM256 338c-25.365 0-46 20.635-46 46 0 25.364 20.635 46 46 46s46-20.636 46-46c0-25.365-20.635-46-46-46z"></path>
+          </svg>
+          <span class="space-left">Problems</span>
+          <!-- <span class="collapsed carrot" style="float: right;" data-bs-toggle="collapse" data-bs-target="#problems-collapse" aria-expanded="false"><svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg"> -->
+
+          <span class="carrot" style="float: right;"><svg width="13" height="8" viewBox="0 0 13 8" fill="none"
+                                                          xmlns="http://www.w3.org/2000/svg">
+          <path
+              d="M6.02734 7.66016C6.34375 7.97656 6.87109 7.97656 7.1875 7.66016L11.9688 2.87891C12.3203 2.52734 12.3203 2 11.9688 1.68359L11.1953 0.875C10.8438 0.558594 10.3164 0.558594 10 0.875L6.58984 4.28516L3.21484 0.875C2.89844 0.558594 2.37109 0.558594 2.01953 0.875L1.24609 1.68359C0.894531 2 0.894531 2.52734 1.24609 2.87891L6.02734 7.66016Z"
+              fill="white"/>
+          </svg>
+          </span>
+        </a>
+        <!-- <div class="collapse" id="problems-collapse"> -->
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          <li class="sub-list text-white active"><span class="sub-item">Problem 1</span></li>
+          <li class="sub-list text-white"><span class="sub-item">Problem 2</span></li>
+          <li class="sub-list text-white"><span class="sub-item">Problem 3</span></li>
+          <li class="sub-list text-white"><span class="sub-item">Problem 4</span></li>
+          <li class="sub-list text-white"><span class="sub-item">Problem 5</span></li>
+          <li class="sub-list text-white"><span class="sub-item">Problem 6</span></li>
+          <li class="sub-list text-white"><span class="sub-item">Problem 7</span></li>
+
+        </ul>
+        <!-- </div> -->
+      </li>
+      <li>
+        <a href="review.html" class="nav-link text-white">
+          <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M18.3009 6.23438L13.1681 5.49609L10.8477 0.820312C10.6368 0.398438 10.2501 0.1875 9.82822 0.1875C9.4415 0.1875 9.05478 0.398438 8.84384 0.820312L6.52353 5.49609L1.39072 6.23438C0.476654 6.375 0.0899353 7.5 0.757904 8.16797L4.48447 11.7891L3.60556 16.8867C3.46494 17.625 4.06259 18.1875 4.73056 18.1875C4.90634 18.1875 5.08212 18.1523 5.2579 18.082L9.82822 15.6562L14.4337 18.082C14.6095 18.1523 14.7852 18.1875 14.961 18.1875C15.629 18.1875 16.1915 17.625 16.086 16.8867L15.2071 11.7891L18.9337 8.16797C19.6017 7.5 19.2149 6.375 18.3009 6.23438ZM14.0118 10.5586L13.379 11.1914L13.5196 12.0703L14.2227 16.043L10.6368 14.1797L9.82822 13.7578L9.86337 2.61328L11.6563 6.23438L12.0431 7.04297L12.922 7.14844L16.9298 7.74609L14.0118 10.5586Z"
+                fill="white" fill-opacity="0.5"/>
+          </svg>
+          <span class="space-left">Score & Review</span>
+        </a>
+      </li>
+    </ul>
+    <hr>
+  </div>
+</div>
+<div class="main" id="main">
+  <div class="mobile-menu" style="position:absolute;margin-top:10px;margin-left:4px;" onclick="showSide();">
+    <button type="button" id="sidebarCollapse" class="btn btn-mobile-menu">
+      <i class="fa fa-bars"></i>
+      <span class="sr-only">Toggle Menu</span>
+    </button>
+  </div>
+  <div class="content-area bg-white">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="top problem" style="max-height:33vh;">
+          <div class="problem-wrapper" style="max-height:31vh;overflow-y:auto;padding:1rem;margin:0.5rem;">
+            <div style="text-align:right;font-weight:900;font-size:8px;line-height:9px;">Ref:K-919</div>
+            <h3 class="problem-title"><i>Simulation.Name for Simulation.ID = 1</i></h3>
+            {{{Simulation.Description for #1}}}
+            {{{Sections where Simulation_ID = 1 displayed 1 at a time with corresponding answers displayed below}}}
+            {{{IF Section.Section Type =1, user can select multiple answers before proceeding to next section (via next
+            section button), If Section.Section Type =2, user may choose only one option and then test advanced to next
+            section automatically}}}
+          </div>
+        </div>
+        <div class="left" style="height:60vh;width:50%;margin-top:1rem;padding:1rem;border-right: 2px solid #E7E7E7;">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" data-bs-toggle="modal"
+                   data-bs-target="#exampleModal" onclick="addText('user',this);">
+            <label class="form-check-label" for="flexCheckDefault">
+              Choose an answer
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" data-bs-toggle="modal"
+                   data-bs-target="#exampleModal" onclick="addText('user',this);">
+            <label class="form-check-label" for="flexCheckDefault">
+              If an answer has a response, display the response in the right panel
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" data-bs-toggle="modal"
+                   data-bs-target="#exampleModal" onclick="addText('user',this);">
+            <label class="form-check-label" for="flexCheckDefault">
+              If an answer has a response popup, display the message in a modal and also display in the right panel
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" data-bs-toggle="modal"
+                   data-bs-target="#exampleModal" onclick="addText('user',this);">
+            <label class="form-check-label" for="flexCheckDefault">
+              After an answer is selected, disable the checkbox
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled>
+            <label class="form-check-label" for="defaultCheck2">
+              Option 5
+            </label>
+          </div>
+        </div>
+        <div class="right" style="height:60vh;width:50%;margin-top:1rem;">
+          <nav>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="sim-tab nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
+                        type="button" role="tab" aria-controls="home" aria-selected="true">Current Section
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="sim-tab nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#history"
+                        type="button" role="tab" aria-controls="profile" aria-selected="false">History
+                </button>
+              </li>
+            </ul>
+          </nav>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"
+                 style="padding:1rem;"></div>
+            {{{If Answer has a response, display it here}}}
+            <div class="tab-pane fade" id="history" role="tabpanel" aria-labelledby="profile-tab" style="padding:1rem;">
+              <span class="history" style="opacity:0.6;">A Past Selection</span><br>
+              <span class="history-response" style="opacity:0.6;">A Past Response</span><br>
+            </div>
+          </div>
+        </div>
+        <a href="/" class="btn btn-primary float-right" style="max-width:130px;margin-left: 70%;">Next Section</a>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal modal-offset fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Response</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            {{If Answer has a ResponsePopup, display responsepopup text here}}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="js/bootstrap.js"></script>
+<script src="js/sidebars.js"></script>
+<script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+
+
+<script>
+  var timerVar = setInterval(countTimer, 1000);
+  var totalSeconds = 0;
+
+  function countTimer() {
+    ++totalSeconds;
+    var hour = Math.floor(totalSeconds / 3600);
+    var minute = Math.floor((totalSeconds - hour * 3600) / 60);
+    var seconds = totalSeconds - (hour * 3600 + minute * 60);
+    if (hour < 10)
+      hour = "0" + hour;
+    if (minute < 10)
+      minute = "0" + minute;
+    if (seconds < 10)
+      seconds = "0" + seconds;
+    //document.getElementById("timer").innerHTML = hour + ":" + minute + ":" + seconds;
+  }
+
+  function addText(user, ctrl) {
+    var htmlToAdd = "<span class='history'>Selection you made</span><br><span class='history-response'>Response to that selection</span><br>";
+    document.getElementById("home").innerHTML += htmlToAdd;
+    document.getElementById("history").innerHTML += htmlToAdd;
+    ctrl.setAttribute('disabled', true)
+  }
+
+  function hideSide() {
+    windowSize();
+    console.log('width is :', windowWidth, 'Height is :', windowHeight);
+    if (windowWidth < 864) {
+      document.getElementById("sidenav").style.width = "0";
+      document.getElementById("main").style.marginLeft = "0";
+      document.getElementById("disclaimerModal").classList.remove("modal-offset");
+      document.getElementById("exampleModal").classList.remove("modal-offset");
+    }
+
+  }
+
+  function showSide() {
+    document.getElementById("sidenav").style.width = "280px";
+    //document.getElementById("main").style.marginLeft = "280px";
+    document.getElementById("disclaimerModal").classList.add("modal-offset");
+    document.getElementById("exampleModal").classList.add("modal-offset");
+  }
+
+  // function toggleMenu(){
+  //   var sideWidth = document.getElementById("sidenav").style.width;
+  //   console.log(sideWidth);
+  //   if (sideWidth === "280px"){
+  //     hideSide();
+  //   }
+  //   else{
+  //     showSide();
+  //   }
+  // }
+
+  /*
+   * windowSize
+   * call this function to get windowSize any time
+   */
+  function windowSize() {
+    windowHeight = window.innerHeight ? window.innerHeight : $(window).height();
+    windowWidth = window.innerWidth ? window.innerWidth : $(window).width();
+
+  }
+
+  $(document).ready(function () {
+    ;
+    //document.getElementById("history").innerHTML = "<span class='history'>Selection you previously made</span><br><span class='history-response'>A Previous Response Stored</span><br>";
+    // if (windowWidth < 864) {
+    //   console.log('width is under 864px !');
+    //   document.getElementById("sidenav").style.width = "0";
+    //   document.getElementById("main").style.marginLeft = "0";
+    //   document.getElementById("exampleModal").classList.remove("modal-offset");
+    // }
+  });
+
+
+  windowSize();
+
+  // get window size on window resize
+  $(window).resize(function () {
+    windowSize();
+    console.log('width is :', windowWidth, 'Height is :', windowHeight);
+    if (windowWidth < 864) {
+      console.log('width is under 864px !');
+      hideSide();
+    } else {
+      console.log('width is over 864px !');
+      document.getElementById("main").style.marginLeft = "280px";
+
+      showSide();
+    }
+  });
+
+</script>
+
+
+</body>
+
+</html>
+
+​
